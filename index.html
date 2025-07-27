@@ -17,6 +17,7 @@
 	</noscript>
     <link rel="icon" href="NA_logo.ico">
 </head>
+   
 
 <body class="landing is-preload">
 
@@ -190,6 +191,40 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <a href="#banner" class="back-to-top" aria-label="Back to Top">
+        <span class="arrow-up"></span>
+      </a>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          const backToTop = document.querySelector(".back-to-top");
+          const banner = document.querySelector("#banner");
+      
+          const observer = new IntersectionObserver(
+            entries => {
+              entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                  // If banner is visible, hide the button
+                  backToTop.classList.add("hidden");
+                } else {
+                  // If banner is NOT visible, show the button
+                  backToTop.classList.remove("hidden");
+                }
+              });
+            },
+            {
+              threshold: 0.5 // Adjust if banner is short/tall
+            }
+          );
+      
+          if (banner) {
+            observer.observe(banner);
+          }
+        });
+      </script>
+      
+      
 
 </body>
 
